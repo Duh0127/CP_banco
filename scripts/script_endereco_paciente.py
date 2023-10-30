@@ -13,7 +13,7 @@ for _ in range(500000):
     id_logradouro = random.randint(1, 10000)
     nr_logradouro = fake.building_number()
     ds_complemento_numero = fake.building_number()
-    ds_ponto_referencia = fake.sentence(nb_words=3)
+    ds_ponto_referencia = fake.sentence(nb_words=2)
     dt_inicio = fake.date_time_between(start_date='-1y', end_date='now')
     
     cur.execute(
