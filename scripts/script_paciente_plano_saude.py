@@ -17,8 +17,8 @@ id_counter = 1
 
 # Quantidade de registros a serem criados
 for _ in range(500000):
-    id_paciente = random.randint(1, 500000)  # ID de paciente aleatório entre 1 e 50000
-    id_plano_saude = random.randint(1, 20)  # ID de plano de saúde aleatório entre 1 e 20, excluindo o número 11
+    id_paciente = id_counter
+    id_plano_saude = random.randint(1, 20)  # ID de   plano de saúde aleatório entre 1 e 20, excluindo o número 11
     while id_plano_saude == 11:
         id_plano_saude = random.randint(1, 20)
     nr_carteira_ps = str(random.randint(10000000, 99999999))  # Número de carteirinha de saúde de 8 dígitos
