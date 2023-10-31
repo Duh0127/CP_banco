@@ -12,12 +12,7 @@ data_min = datetime(2022, 1, 1, 0, 0, 0)
 data_max = datetime(2023, 12, 31, 23, 59, 59)
 id_counter = 1
 
-ids = pegar_ids()
-print(ids)
-
-for id_consulta, id_unid_hospital in ids:
-    print(id_consulta, id_unid_hospital)
-
+for _ in range(499999):
     id_prescricao_medica = id_counter
     id_medicamento = random.randint(1, 150000)
     ds_posologia = fake.sentence(nb_words=4)
@@ -25,7 +20,13 @@ for id_consulta, id_unid_hospital in ids:
     observacao_uso = fake.sentence(nb_words=6)
     qt_medicamento = random.randint(1, 60)
 
-    print(id_prescricao_medica, id_medicamento, ds_posologia, ds_via, observacao_uso, qt_medicamento)
+    cur.execute("SELECT ID_CONSULTA, ID_UNID_HOSPITAL FROM T_RHSTU_CONSULTA WHERE ID_CONSULTA = :ID_CONSULTA", ID_CONSULTA=id_counter)
+    result = cur.fetchone()
+    
+    id_unid_hospital = result[1]
+    id_consulta = result[0]
+
+    print(id_prescricao_medica, id_medicamento, ds_posologia, ds_via, observacao_uso, qt_medicamento,  id_unid_hospital, id_consulta)
 
     cur.execute(
         "INSERT INTO T_RHSTU_PRESCRICAO_MEDICA VALUES(:ID_PRESCRICAO_MEDICA, :ID_UNID_HOSPITAL, :ID_CONSULTA, :ID_MEDICAMENTO, :DS_POSOLOGIA, :DS_VIA, :DS_OBSERVACAO_USO, :QT_MEDICAMENTO, USER, SYSDATE)",

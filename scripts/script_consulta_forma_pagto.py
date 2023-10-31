@@ -12,7 +12,7 @@ data_min = datetime(2010, 1, 1)
 data_max = datetime(2022, 12, 31)
 id_counter = 1
 
-for _ in range(500000):
+for _ in range(80000):
     id_consulta_pagto = id_counter 
     id_consulta = id_counter 
     id_paciente = id_counter 
